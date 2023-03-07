@@ -1,0 +1,25 @@
+nav.fixed-top
+  .d-flex.justify-content-between.align-items-center.py-2
+    h2.px-4
+      a.text-decoration-none href="/" Bulletin Board
+    - if current_user
+      ul.list-unstyled.mb-0.px-3.d-flex.align-items-center
+        li.d-inline-block.me-4
+          a.text-decoration-none.fs-6 href="/" User List
+        li.d-inline-block.me-4
+          a.text-decoration-none.fs-6 href="/posts" Posts List
+        li.d-inline-block
+          .dropdown
+            button.btn.bnt-none.dropdown-toggle.action-btn.text-captilized data-bs-toggle="dropdown" aria-expanded="false" = current_user.name
+            ul.dropdown-menu
+              li 
+                a.dropdown-item href="/profile" Profile
+              li 
+                a.dropdown-item href="/logout" Logout
+    - else
+      ul.list-unstyled.mb-0.px-3.d-flex.align-items-center
+        li.d-inline-block.me-4
+          a.text-decoration-none.fs-6 href="/users/new" Register
+        li.d-inline-block.me-4
+          a.text-decoration-none.fs-6 href="/login" login
+

@@ -1,0 +1,55 @@
+body{
+  background-color: #aaeaf3 !important;
+}
+
+nav{
+  background-color: #f9f9f9;
+  color: #77acb3;
+}
+
+.field_with_errors {
+  background-color: transparent !important;
+  display: block !important;
+  padding: 0 !important;
+}
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* dropdown button */
+.action-btn{
+  color: #77acb3 !important;
+  border-color: transparent !important;
+}
+
+.btn.show{
+  border-color: transparent !important;
+}
+
+a{
+  color: #77acb3 !important;
+}
+
+a:hover{
+  background-color: transparent;
+}
+
+.btn-color {
+  background-color: #77acb3 !important;
+}
+
+.txt-color {
+  color: #77acb3 !important;
+}
+
+// datatable pagination
+.page-item{
+  margin-right: 5px !important;
+}
+.page-item .page-link{
+  background-color: #317a84 !important;
+  color: white !important;
+}

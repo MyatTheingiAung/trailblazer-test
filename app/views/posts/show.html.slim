@@ -1,0 +1,12 @@
+= render 'share/nav'
+.container style="margin-top:80px"
+  .row 
+    .col-12.col-md-7.mx-auto
+      .card 
+        .card-body 
+          h3.txt-color = @post.title
+          p = @post.description
+          .d-flex.justify-content-end
+            => link_to "Edit",edit_post_path(@post), class: "btn btn-color text-white"
+
+     
