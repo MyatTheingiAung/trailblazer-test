@@ -3,6 +3,7 @@ class LoginController < ApplicationController
   def login
     run User::Operation::Login::Present
   end
+
   # function actual_login
   def actual_login
     run User::Operation::Login do |result|

@@ -9,36 +9,36 @@
             .col-3
               p Name 
             .col-8
-              p Admin
+              p = @user.name
           .row 
             .col-3
               p Email
             .col-8
-              p admin@gmail.com
+              p = @user.email
           .row 
             .col-3
               p Password
             .col-8
-              a.d-inline-block href='/password/change' Edit
+              a.d-inline-block href="/password/change/#{ @user.id }" Edit
           .row
             .col-3
               p Phone
             .col-8
-              p 0987654321
+              p = @user.phone
           .row 
             .col-3
               p Address
             .col-8
-              p Pyay
+              p = @user.address
           .row 
             .col-3
               p Birthday
             .col-8
-              p 2000-5-15
+              p = @user.birthday
           .row 
             .col-3
               p Type
             .col-8
-              p User
+              p = @user.role
           .d-flex.justify-content-end 
-            a.btn.btn-color.text-white href="/profile/edit" Edit
+            a.btn.btn-color.text-white href="/users/#{ @user.id }/edit" Edit

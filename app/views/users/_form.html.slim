@@ -1,0 +1,50 @@
+= form_with model: @form do |f|
+  .form-group.mb-4
+    = f.label :name, class: 'mb-2'
+    = f.text_field :name, class: 'form-control'
+    - if @form.errors[:name].any?
+      .error-msg Name #{ @form.errors[:name][0] }
+  .form-group.mb-4
+    = f.label :email, class: 'mb-2'
+    = f.text_field :email, class: 'form-control'
+    - if @form.errors[:email].any?
+      .error-msg Email #{ @form.errors[:email][0] }
+  - if @user == nil
+    .form-group.mb-4
+      = f.label :password, class: 'mb-2'
+      = f.password_field :password, class: 'form-control'
+      - if @form.errors[:password].any?
+        .error-msg Password #{ @form.errors[:password][0] }
+    .form-group.mb-4
+      = f.label :password_confirmation, class: 'mb-2'
+      = f.password_field :password_confirmation, class: 'form-control'
+      - if @form.errors[:password_confirmation].any?
+        .error-msg Password Confirmation #{ @form.errors[:password_confirmation][0] }
+  .form-group.mb-4
+    = f.label :phone, class: 'mb-2'
+    = f.text_field :phone, class: 'form-control'
+    - if @form.errors[:phone].any?
+      .error-msg Phone #{ @form.errors[:phone][0] }
+  .form-group.mb-4
+    = f.label :address, class: 'mb-2'
+    = f.text_field :address, class: 'form-control'
+    - if @form.errors[:address].any?
+      .error-msg Address #{ @form.errors[:address][0] }
+  .form-group.mb-4 
+    = f.label :birthday, class: 'mb-2'
+    = f.date_field :birthday, class: 'form-control'
+    - if @form.errors[:birthday].any?
+      .error-msg Birthday #{ @form.errors[:birthday][0] }
+  .form-group.mb-4
+    = f.label :create_as, class: 'mb-2'
+    .form-check.d-flex.p-0.mb-2
+      = f.radio_button :role, 'admin'
+      = f.label :admin
+    .form-check.d-flex.p-0
+      = f.radio_button :role, 'user'
+      = f.label :user
+    - if @form.errors[:role].any?
+      .error-msg Role #{ @form.errors[:role][0] }
+  .d-flex.justify-content-end.mb-2
+    a.btn.btn-secondary.text-white.me-2 href="#" Cancel
+    button.btn.btn-primary Create User

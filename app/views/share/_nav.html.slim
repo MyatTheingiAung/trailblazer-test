@@ -13,7 +13,7 @@ nav.fixed-top
             button.btn.bnt-none.dropdown-toggle.action-btn.text-captilized data-bs-toggle="dropdown" aria-expanded="false" = current_user.name
             ul.dropdown-menu
               li 
-                a.dropdown-item href="/profile" Profile
+                a.dropdown-item href="/profile/#{ current_user.id }" Profile
               li 
                 a.dropdown-item href="/logout" Logout
     - else
