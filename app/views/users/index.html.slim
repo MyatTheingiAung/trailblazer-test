@@ -1,7 +1,7 @@
 == render 'share/nav'
 div.container style="margin-top:80px"
   .row 
-    .col-12.col-md-8.mx-auto
+    .col-12.col-md-10.mx-auto
       .card 
         .card-body
           .table-responsive 
@@ -15,7 +15,8 @@ div.container style="margin-top:80px"
                   th Address 
                   th Birthday 
                   th Role
-                  th Action
+                  -if user_signed_in?
+                    th Action
               - @users.each do |user|
                 tr 
                   td = user.id
@@ -25,7 +26,7 @@ div.container style="margin-top:80px"
                   td = user.address 
                   td = user.birthday 
                   td = user.role
-                  td.d-flex
-                    a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
-                    => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"
-          a.btn.text-white.mt-3.float-end href="/users/new" style="background-color: #317a84" Create User
+                  - if user_signed_in?
+                    td.d-flex
+                      a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
+                      => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"

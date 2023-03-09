@@ -1,0 +1,56 @@
+.container style="margin-top: 60px; margin-bottom: 60px"
+  .row 
+  .col-12.col-md-8.mx-auto.mt-5
+    .card 
+      .card-body
+        h3 style="color:#77acb3" Sign Up
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form-group.mb-4
+            = f.label :name, class: 'mb-2'
+            = f.text_field :name, class: 'form-control'
+            - if resource.errors.include?(:name)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:name)[0]
+          .form-group.mb-4
+            = f.label :email, class: 'mb-2'
+            = f.text_field :email, class: 'form-control'
+            - if resource.errors.include?(:email)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:email)[0]
+          .form-group.mb-4
+            = f.label :password, class: 'mb-2'
+            = f.password_field :password, class: 'form-control'
+            - if resource.errors.include?(:password)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:password)[0]
+          .form-group.mb-4
+            = f.label :password_confirmation, class: 'mb-2'
+            = f.password_field :password_confirmation, class: 'form-control'
+            - if resource.errors.include?(:password_confirmation)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:password_confirmation)[0]
+          .form-group.mb-4
+            = f.label :phone, class: 'mb-2'
+            = f.text_field :phone, class: 'form-control'
+            - if resource.errors.include?(:phone)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:phone)[0]
+          .form-group.mb-4
+            = f.label :address, class: 'mb-2'
+            = f.text_field :address, class: 'form-control'
+            - if resource.errors.include?(:address)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:address)[0]
+          .form-group.mb-4 
+            = f.label :birthday, class: 'mb-2'
+            = f.date_field :birthday, class: 'form-control'
+            - if resource.errors.include?(:birthday)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:birthday)[0]
+          .form-group.mb-4
+            = f.label :create_as, class: 'mb-2'
+            .form-check.d-flex.p-0.mb-2
+              = f.radio_button :role, 'admin'
+              = f.label :admin
+            .form-check.d-flex.p-0
+              = f.radio_button :role, 'user'
+              = f.label :user
+            - if resource.errors.include?(:role)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:role)[0]
+          .d-flex.justify-content-end.align-items-center.mb-2
+            == render "devise/shared/links"
+            a.btn.btn-secondary.d-inline-block.ms-3.text-white.me-2 href="#" Cancel
+            button.btn.btn-primary Sign Up

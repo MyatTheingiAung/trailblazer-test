@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy profile password_change actual_password_change]
+  skip_before_action :authenticate_user!, only: %i[index]
 
   # function: index
   # show user list
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   # params user
   def create
     run User::Operation::Create do |_result|
-      return redirect_to root_path
+      return redirect_to root_path, notice: 'User Create Successfully!'
     end
 
     render :new
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
   # params user
   def update
     run User::Operation::Update do |_result|
-      return redirect_to root_path
+      return redirect_to root_path, notice: 'User Update Successfully!'
     end
 
     render :edit
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
   # delete user
   def destroy
     run User::Operation::Destroy do |_result|
-      return redirect_to root_path
+      return redirect_to root_path, notice: 'User Delete Successfully!'
     end
   end
 
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
   # params user
   def actual_password_change
     run User::Operation::Password do |_result|
-      return redirect_to "/profile/#{@user.id}"
+      return redirect_to "/profile/#{@user.id}", notice: 'Password Change Successfully!'
     end
     render :password_change
   end

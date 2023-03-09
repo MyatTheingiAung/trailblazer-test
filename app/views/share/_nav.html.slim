@@ -5,7 +5,7 @@ nav.fixed-top
     - if current_user
       ul.list-unstyled.mb-0.px-3.d-flex.align-items-center
         li.d-inline-block.me-4
-          a.text-decoration-none.fs-6 href="/" User List
+          a.text-decoration-none.fs-6 href="/users" User List
         li.d-inline-block.me-4
           a.text-decoration-none.fs-6 href="/posts" Posts List
         li.d-inline-block
@@ -14,12 +14,12 @@ nav.fixed-top
             ul.dropdown-menu
               li 
                 a.dropdown-item href="/profile/#{ current_user.id }" Profile
-              li 
-                a.dropdown-item href="/logout" Logout
+              li
+                a.dropdown-item href="/users/sign_out" data-method="delete" Logout
     - else
       ul.list-unstyled.mb-0.px-3.d-flex.align-items-center
         li.d-inline-block.me-4
-          a.text-decoration-none.fs-6 href="/users/new" Register
+          a.text-decoration-none.fs-6 href="/users/sign_up" Register
         li.d-inline-block.me-4
-          a.text-decoration-none.fs-6 href="/login" login
+          a.text-decoration-none.fs-6 href="/users/sign_in" login
 

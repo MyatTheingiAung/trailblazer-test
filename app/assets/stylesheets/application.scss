@@ -17,3 +17,18 @@
 
  @import "bootstrap/scss/bootstrap";
  @import "datatables.net-bs4/css/dataTables.bootstrap4.css";
+ @import "toastr/toastr";
+
+ #toast-container > div {
+    opacity:1 !important;
+    margin-top: 50px !important;
+  }
+  
+  #toast-container > .toast:nth-of-type(1) {
+    display: block;
+  }
+  
+  #toast-container > .toast {
+    display: none;
+  }
+  

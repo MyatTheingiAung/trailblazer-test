@@ -63,3 +63,5 @@ gem 'trailblazer-rails'
 gem 'dry-validation'
 gem 'reform'
 gem 'reform-rails'
+
+gem 'devise'

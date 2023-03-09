@@ -1,59 +1,61 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
+  # function: index
+  # show post list
   def index
-    @posts = Post.all
+    run Post::Operation::Index do |result|
+      @posts = result[:posts]
+    end
   end
 
-  # GET /posts/1 or /posts/1.json
+  # function: profile
+  # show details info
   def show
+    run Post::Operation::Show do |result|
+      @post = result[:model]
+    end
   end
 
-  # GET /posts/new
+  # function: new
+  # show create form
   def new
-    @post = Post.new
+    run Post::Operation::Create::Present
   end
 
-  # GET /posts/1/edit
-  def edit
-  end
-
-  # POST /posts or /posts.json
+  # function: create
+  # create user
+  # params user
   def create
-    @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    run Post::Operation::Create do |_result|
+      return redirect_to posts_path, notice: 'Post Create Successfully!'
     end
+
+    render :new
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
+  # function: edit
+  # show edit form
+  def edit
+    run Post::Operation::Update::Present
+  end
+
+  # function: create
+  # update post
+  # params post
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    run Post::Operation::Update do |_result|
+      return redirect_to posts_path, notice: 'Post Update Successfully!'
     end
+
+    render :edit
   end
 
-  # DELETE /posts/1 or /posts/1.json
+  # function: destroy
+  # delete post
   def destroy
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+    run Post::Operation::Destroy do |_result|
+      return redirect_to posts_path, notice: 'User Delete Successfully!'
     end
   end
 

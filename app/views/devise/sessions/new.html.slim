@@ -1,0 +1,26 @@
+.container
+  .row 
+    .col-12.col-md-3.mx-auto style="position:absolute; top: 50%; right: 50%; transform: translate(50%,-50%)"
+      .card
+        .card-body
+          h3 style="color:#77acb3" Log In
+          - if flash.alert
+            span.d-block.text-danger.fw-bold style="font-size:14px;" = flash.alert
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .form-group.mb-4
+              = f.label :email, class: 'mb-2'
+              = f.text_field :email, class: 'form-control'
+
+            .form-group.mb-4
+              = f.label :password, class: 'mb-2'
+              = f.password_field :password, class: 'form-control'
+
+            .d-flex.justify-content-start.align-items-center
+              button.btn.btn-primary.me-2 Log In
+
+              - if devise_mapping.rememberable?
+                span.field.form-check
+                  = f.check_box :remember_me, class: 'form-check-input'
+                  = f.label :remember_me, class: 'form-check-label'
+
+            == render "devise/shared/links"

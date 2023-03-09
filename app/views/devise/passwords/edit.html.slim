@@ -1,0 +1,21 @@
+.container style="margin-top:80px"
+  .row 
+    .col-12.col-md-4.mx-auto 
+      .card 
+        .card-body 
+          h3 Change your Password
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+            = f.input :reset_password_token, as: :hidden
+            = f.full_error :reset_password_token
+            .form-group.mb-4
+              = f.label :new_password, class: 'mb-2'
+              = f.text_field :password, class: 'form-control'
+              - if resource.errors.include?(:password)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:password)[0]
+            .form-group.mb-4
+              = f.label :confirm_your_new_password, class: 'mb-2'
+              = f.text_field :password_confirmation, class: 'form-control'
+              - if resource.errors.include?(:password_confirmation)
+              span.d-block.text-danger.fw-bold style="font-size:14px;" = resource.errors.full_messages_for(:password_confirmation)[0]
+            button.btn.btn-primary Change my password
+          == render "devise/shared/links"

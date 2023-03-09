@@ -12,8 +12,10 @@ require("@popperjs/core")
 require('datatables.net-bs4')
 import "../../assets/stylesheets/application.scss"
 
+
 import $ from 'jquery';
 global.$ = jQuery;
+global.toastr = require("toastr")
 
 Rails.start()
 Turbolinks.start()

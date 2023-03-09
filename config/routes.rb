@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  devise_for :users
   resources :posts
   root to: 'users#index'
   resources :users
-  # get '/register', to: 'users#new'
   get '/login', to: 'login#login'
   post '/login', to: 'login#actual_login'
   get '/logout', to: 'login#destroy'
