@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  default_url_options host: 'scm.myattheingiaung@gmail.com'
   get 'home/index'
   devise_for :users
   resources :posts

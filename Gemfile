@@ -65,3 +65,6 @@ gem 'reform'
 gem 'reform-rails'
 
 gem 'devise'
+
+gem 'rails-controller-testing'
+gem 'rspec-rails'

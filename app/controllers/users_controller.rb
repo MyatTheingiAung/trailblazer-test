@@ -60,22 +60,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # function: password_change
-  # show password form
-  def password_change
-    run User::Operation::Password::Present
-  end
-
-  # function: actual_password_change
-  # change password
-  # params user
-  def actual_password_change
-    run User::Operation::Password do |_result|
-      return redirect_to "/profile/#{@user.id}", notice: 'Password Change Successfully!'
-    end
-    render :password_change
-  end
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user

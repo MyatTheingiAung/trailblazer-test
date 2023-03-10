@@ -11,10 +11,10 @@
       .error-msg Description #{ @form.errors[:description][0] }
   .form-group.mb-4 
     = f.label :privacy_setting, class: 'mb-2'
-    .form-check.p-0.mb-2
+    .form-check.d-flex.p-0.mb-2
       = f.radio_button :privacy, 'public'
       = f.label :public
-    .form-check.p-0
+    .form-check.p-0.d-flex
       = f.radio_button :privacy, 'private'
       = f.label :private
     - if @form.errors[:privacy].any?

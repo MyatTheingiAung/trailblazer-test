@@ -32,7 +32,7 @@
       .error-msg Address #{ @form.errors[:address][0] }
   .form-group.mb-4 
     = f.label :birthday, class: 'mb-2'
-    = f.date_field :birthday, class: 'form-control'
+    = f.date_field :birthday,  class: 'form-control', value: @user.birthday if @user
     - if @form.errors[:birthday].any?
       .error-msg Birthday #{ @form.errors[:birthday][0] }
   .form-group.mb-4
