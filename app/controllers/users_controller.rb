@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   # params user
   def update
     run User::Operation::Update do |_result|
+      UserMailer.example(User.new(email: 'scm.myattheingiaung@gmail.com')).deliver
       return redirect_to root_path, notice: 'User Update Successfully!'
     end
 
