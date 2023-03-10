@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'support/auth_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -31,8 +32,12 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
 
+  # current_user define in support/auth_helper.rb
+  config.include AuthHelper, type: :request
+
   config.before do
     allow_any_instance_of(ApplicationController).to receive(:authenticate_user!).and_return(true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(current_user)
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

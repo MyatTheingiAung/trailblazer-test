@@ -23,6 +23,7 @@ Post.destroy_all
 Post.create!([{
   title: 'Routing In Ruby On Rails',
   description: 'The Router is responsible for matching the incoming HTTP request to the appropriate controller action to run, based on the HTTP verb and the URL being requested. It is a critical part of any Rails application as it determines what response the user will receive. When an HTTP request arrives, Rails also grabs all the parameters that came with it and makes them available in a special hash called params. This hash can be…',
-  privacy: 'public'
+  privacy: 'public',
+  user_id: User.first.id
 }])
 p "Created #{Post.count} posts"

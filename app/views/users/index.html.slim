@@ -27,6 +27,8 @@ div.container style="margin-top:80px"
                   td = user.birthday 
                   td = user.role
                   - if user_signed_in?
-                    td.d-flex
-                      a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
-                      => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"
+                    td.d-flex.justify-content-end
+                      a.btn.btn-sm.btn-secondary.me-2.text-white href="/profile/#{ user.id }/edit" Show
+                      -if user.id == current_user.id
+                        a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
+                        => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"

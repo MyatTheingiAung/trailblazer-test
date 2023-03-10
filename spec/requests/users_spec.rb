@@ -47,7 +47,7 @@ describe 'Users', type: :request do
     it 'return status code 200' do
       post '/users', params: valid_params
       expect(response).to redirect_to root_path
-      user = User.first
+      user = User.last
       expect(user.name).to eq 'Mg Mg'
       expect(user.email).to eq 'mgmg@gmail.com'
       expect(user.phone).to eq '09987654321'
@@ -61,37 +61,32 @@ describe 'Users', type: :request do
   end
   describe 'GET /users/1/edit' do
     it 'return status code 200' do
-      user = User.create(name: 'ma ma', email: 'mama@gmail.com', password: '123456', password_confirmation: '123456', phone: '09987654321', address: 'pyay', birthday: '2023-03-07', role: 'user')
-      get edit_user_url(user)
+      get edit_user_url(User.first)
       expect(response).to be_successful
     end
   end
   describe 'PATCH /users/1' do
     it 'return status code 200' do
-      user = User.create(name: 'ma ma', email: 'mama@gmail.com', password: '123456', password_confirmation: '123456', phone: '09987654321', address: 'pyay', birthday: '2023-03-07', role: 'user')
-      patch user_url(user), params: valid_params
+      patch user_url(User.first), params: valid_params
       expect(response).to redirect_to root_path
       user = User.first
       expect(user.name).to eq 'Mg Mg'
     end
     it 'return status code 422' do
-      user = User.create(name: 'ma ma', email: 'mama@gmail.com', password: '123456', password_confirmation: '123456', phone: '09987654321', address: 'pyay', birthday: '2023-03-07', role: 'user')
-      patch user_url(user), params: invalid_params
+      patch user_url(User.first), params: invalid_params
       expect(response).to have_http_status(200)
       expect(response).to render_template(:edit)
     end
   end
   describe 'DELETE /users/1' do
     it 'return status code 200' do
-      user = User.create(name: 'ma ma', email: 'mama@gmail.com', password: '123456', password_confirmation: '123456', phone: '09987654321', address: 'pyay', birthday: '2023-03-07', role: 'user')
-      delete "/users/#{user.id}"
+      delete "/users/#{User.first.id}"
       expect(response).to redirect_to root_path
     end
   end
   describe 'GET /profile' do
     it 'return status code 200' do
-      user = User.create(name: 'ma ma', email: 'mama@gmail.com', password: '123456', password_confirmation: '123456', phone: '09987654321', address: 'pyay', birthday: '2023-03-07', role: 'user')
-      get "/profile/#{user.id}"
+      get "/profile/#{User.first.id}"
       expect(response).to be_successful
     end
   end

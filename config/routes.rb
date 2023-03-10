@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  # rspec mail
   default_url_options host: 'scm.myattheingiaung@gmail.com'
+
+  # letter opener web
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   get 'home/index'
   devise_for :users
   resources :posts

@@ -7,7 +7,8 @@ describe 'Posts', type: :request do
         {
           'title' => 'post title',
           'description' => 'post description',
-          'privacy' => 'private'
+          'privacy' => 'private',
+          'user_id' => current_user.id
         }
     }
   }
@@ -17,7 +18,8 @@ describe 'Posts', type: :request do
         {
           'title' => nil,
           'description' => nil,
-          'privacy' => 'private'
+          'privacy' => 'private',
+          'user_id' => current_user.id
         }
     }
   }
@@ -38,7 +40,7 @@ describe 'Posts', type: :request do
     it 'return status code 200' do
       post posts_url, params: valid_params
       expect(response).to redirect_to posts_path
-      post = Post.first
+      post = Post.last
       expect(post.title).to eq "post title"
       expect(post.description).to eq "post description"
       expect(post.privacy).to eq "private"
@@ -51,30 +53,26 @@ describe 'Posts', type: :request do
   end
   describe 'GET /posts/1/edit' do
     it 'return status code 200' do
-      post = Post.create(title: 'title', description: 'description', privacy: 'public')
-      get edit_post_url(post)
+      get edit_post_url(Post.first)
       expect(response).to be_successful
     end
   end
   describe 'PATCH /posts/1' do
     it 'return status code 200' do
-      post = Post.create(title: 'title', description: 'description', privacy: 'public')
-      patch post_url(post), params: valid_params
+      patch post_url(Post.first), params: valid_params
       expect(response).to redirect_to posts_path
       post = Post.first
       expect(post.title).to eq 'post title'
     end
     it 'return status code 422' do
-      post = Post.create(title: 'title', description: 'description', privacy: 'public')
-      patch post_url(post), params: invalid_params
+      patch post_url(Post.first), params: invalid_params
       expect(response).to have_http_status(200)
       expect(response).to render_template(:edit)
     end
   end
   describe 'DELETE /posts/1' do
     it 'return status code 200' do
-      post = Post.create(title: 'title', description: 'description', privacy: 'public')
-      delete "/posts/#{post.id}"
+      delete "/posts/#{Post.first.id}"
       expect(response).to redirect_to posts_path
     end
   end
