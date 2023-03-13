@@ -91,6 +91,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.7)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     diff-lcs (1.5.0)
     disposable (0.6.3)
       declarative (>= 0.0.9, < 1.0.0)
@@ -362,6 +365,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   debug (~> 1.7, >= 1.7.1)
   devise
+  devise_invitable (~> 2.0.0)
   dry-validation
   jbuilder (~> 2.7)
   letter_opener_web (~> 1.4)

@@ -68,6 +68,7 @@ gem 'reform'
 gem 'reform-rails'
 
 gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
 
 gem 'rails-controller-testing'
 gem 'rspec-rails'
