@@ -62,6 +62,8 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    banken (1.0.3)
+      activesupport (>= 3.0.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -361,6 +363,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  banken
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug

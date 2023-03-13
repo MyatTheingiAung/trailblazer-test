@@ -30,5 +30,6 @@ div.container style="margin-top:80px"
                     td.d-flex.justify-content-end
                       a.btn.btn-sm.btn-secondary.me-2.text-white href="/profile/#{ user.id }" Show
                       -if user.id == current_user.id
-                        a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
+                        - if UsersLoyalty.new(current_user, user).update?
+                          a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
                         => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"

@@ -9,5 +9,6 @@
           .d-flex.justify-content-end
             a.btn.btn-primary.text-white.me-2 href="/posts" Back
             - if current_user && @post.user_id == current_user.id
-              => link_to "Edit",edit_post_path(@post), class: "btn btn-color text-white"
+              - if PostsLoyalty.new(current_user, @post).update?
+                => link_to "Edit",edit_post_path(@post), class: "btn btn-color text-white"
      

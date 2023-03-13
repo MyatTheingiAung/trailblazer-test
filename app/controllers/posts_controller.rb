@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # function: index
   # show post list
   def index
-    run Post::Operation::Index do |result|
+    run Post::Operation::Index, current_user: current_user do |result|
       @posts = result[:posts]
     end
   end
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   # function: edit
   # show edit form
   def edit
+    authorize! @post
     run Post::Operation::Update::Present
   end
 

@@ -74,3 +74,5 @@ gem 'rails-controller-testing'
 gem 'rspec-rails'
 
 gem "paranoia", "~> 2.2"
+
+gem "banken"

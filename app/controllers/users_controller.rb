@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   # function: edit
   # show edit form
   def edit
+    authorize! @user
     run User::Operation::Update::Present
   end
 

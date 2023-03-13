@@ -2,6 +2,11 @@
 .container.col-12.col-md-7 style="margin-top:80px"
   .d-flex.justify-content-end
     a.btn.btn-color.text-white.mb-2 href="/posts/new" Add Post
+  - if @posts.empty?
+    .card
+      .card-body
+        .text-center
+          span.text-capitalize.fw-bold No Post available
   - @posts.each do |post|
     .card.mb-5
       .text-white.px-4.py-2.btn-color
