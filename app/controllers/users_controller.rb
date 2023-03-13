@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy profile password_change actual_password_change]
-  skip_before_action :authenticate_user!, only: %i[index]
 
   # function: index
   # show user list

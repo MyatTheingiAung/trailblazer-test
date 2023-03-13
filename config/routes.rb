@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users, controllers: { invitations: 'users/invitations' }
   resources :posts
-  root to: 'users#index'
+  root to: 'posts#index'
   resources :users
   get '/login', to: 'login#login'
   post '/login', to: 'login#actual_login'

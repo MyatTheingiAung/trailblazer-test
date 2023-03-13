@@ -8,7 +8,6 @@
           p = @post.description
           .d-flex.justify-content-end
             a.btn.btn-primary.text-white.me-2 href="/posts" Back
-            - if @post.user_id == current_user.id
+            - if current_user && @post.user_id == current_user.id
               => link_to "Edit",edit_post_path(@post), class: "btn btn-color text-white"
-
      

@@ -72,3 +72,5 @@ gem 'devise_invitable', '~> 2.0.0'
 
 gem 'rails-controller-testing'
 gem 'rspec-rails'
+
+gem "paranoia", "~> 2.2"

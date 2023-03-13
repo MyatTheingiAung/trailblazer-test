@@ -1,24 +1,49 @@
-# README
+# Bulletin Board Trailblazer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+- Ruby 2.6.9
+- MySQL 5.7 or 8
+- Node 16.17.1
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone the repo locally:
+```
+https://github.com/MyatTheingiAung/trailblazer-test.git
+```
 
-* System dependencies
+`cd` into cloned directory and install dependencies. run below command one by one.
+```bash
+npm install
+bundle install
+```
 
-* Configuration
+## Database Migration
 
-* Database creation
+Run database creations:
+```
+rails db:create
+```
 
-* Database initialization
+Run database migrations:
+```
+rails db:migrate
+```
 
-* How to run the test suite
+Run database seeder:
+```
+rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Server Run
 
-* Deployment instructions
+Run the dev server:
+```
+rails serve
+```
 
-* ...
+Visit below url:
+```
+http://127.0.0.1:3000/
+```
+
