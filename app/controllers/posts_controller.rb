@@ -8,6 +8,14 @@ class PostsController < ApplicationController
     run Post::Operation::Index, current_user: current_user do |result|
       @posts = result[:posts]
     end
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=posts-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv"
+        render template: 'posts/index.csv.erb'
+      end
+    end
   end
 
   # function: profile
@@ -57,7 +65,19 @@ class PostsController < ApplicationController
   # delete post
   def destroy
     run Post::Operation::Destroy do |_result|
-      return redirect_to posts_path, notice: 'User Delete Successfully!'
+      return redirect_to posts_path, notice: 'Post Delete Successfully!'
+    end
+  end
+
+  # function: import
+  # posts import
+  def import
+    run Post::Operation::Import do |result|
+      redirect_to posts_path, notice: 'Post Upload Successfully!'
+    end
+    if result.failure? && result[:file] || result[:file]
+      flash[:file] = result[:file]
+      redirect_to posts_path
     end
   end
 

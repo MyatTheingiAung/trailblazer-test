@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/login', to: 'login#actual_login'
   get '/logout', to: 'login#destroy'
   get '/profile/:id', to: 'users#profile'
-  get '/password/change/:id', to: 'users#password_change'
-  post '/actual/change/:id', to: 'users#actual_password_change'
+  post '/posts/import', to: 'posts#import'
+  post '/users/import', to: 'users#import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

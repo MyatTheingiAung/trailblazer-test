@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   include Banken
-  protect_from_forgery
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   helper_method :current_user
-  rescue_from Banken::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Banken::NotAuthorizedError, with: :not_authorized
+  rescue_from ActiveRecord::RecordNotFound, with: :not_authorized
 
   protected
 
@@ -13,7 +14,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :current_password])
   end
 
-  def user_not_authorized
+  def not_authorized
     render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
   end
 end

@@ -1,7 +1,16 @@
 = render 'share/nav'
-.container.col-12.col-md-7 style="margin-top:80px"
-  .d-flex.justify-content-end
-    a.btn.btn-color.text-white.mb-2 href="/posts/new" Add Post
+.container.col-12.col-md-7 style="margin-top:84px"
+  .d-flex.justify-content-between
+    a.btn.btn-color.text-white href="/posts/new" Add Post
+    .d-flex.align-items-center
+      = form_with url: "posts/import", method: :post do |f|
+        .form-group.me-2.d-inline-block 
+          = f.file_field :file, class: 'form-control'
+        button.btn.btn-primary.mb-1.border-0 Upload Post
+      => link_to "Download Post", posts_path(format: 'csv'), download: 'post' , class: "btn btn-danger text-white ms-4 border-0"
+  - if flash[:file]
+    .fs-6.fw-bold.text-danger style="margin-left:32%" = flash[:file]
+  .mb-4
   - if @posts.empty?
     .card
       .card-body
@@ -22,4 +31,4 @@
       .d-flex.justify-content-end.align-items-center.px-4.pb-3
         a.btn.btn-color.text-white.me-2 href="posts/#{post.id}" Show More
         - if current_user && post.user_id == current_user.id
-          => link_to "Delete", "/posts/#{ post.id }", method: :delete, class: "btn btn-danger text-white"
+          => link_to "Delete", "/posts/#{ post.id }", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger text-white"

@@ -90,4 +90,15 @@ describe 'Users', type: :request do
       expect(response).to be_successful
     end
   end
+  describe 'POST /users/import' do
+    it 'return status code 200' do
+      file = Rack::Test::UploadedFile.new('app/assets/users.csv','text/csv')
+      post '/users/import', :params => { file: file }
+      expect(response).to redirect_to root_path
+    end
+    it 'return status code 422' do
+      post '/users/import'
+      expect(response).to redirect_to users_path
+    end
+  end
 end

@@ -7,6 +7,26 @@ class UsersController < ApplicationController
     run User::Operation::Index do |result|
       @users = result[:users]
     end
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=users-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv"
+        render template: 'users/index.csv.erb'
+      end
+    end
+  end
+
+  # function: import
+  # users import
+  def import
+    run User::Operation::Import do |result|
+      redirect_to root_path, notice: 'User Upload Successfully!'
+    end
+    if result.failure? && result[:file] || result[:file]
+      flash[:file] = result[:file]
+      redirect_to users_path
+    end
   end
 
   # function: new

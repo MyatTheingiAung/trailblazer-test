@@ -1,13 +1,26 @@
 == render 'share/nav'
-div.container style="margin-top:80px"
+div.container style="margin-top:90px"
+  .row.mb-4
+    .col-12.col-md-10.mx-auto 
+      .card
+        .card-body
+          .d-flex.justify-content-between.align-items-center
+            h3 CSV Export Import
+            = form_with url: "users/import", method: :post do |f|
+              .form-group.me-2.d-inline-block 
+                = f.file_field :file, class: 'form-control'
+              button.btn.btn-primary.mb-1.border-0 Upload User
+              => link_to "Download User", users_path(format: 'csv'), download: 'user' , class: "btn btn-danger text-white ms-4 border-0"
+          - if flash[:file]
+            .fs-6.fw-bold.text-danger style="margin-left:43%" = flash[:file]
   .row 
     .col-12.col-md-10.mx-auto
       .card 
         .card-body
-          .table-responsive 
+          .table-responsive.mt-2
             table.table.table-striped.table-bordered.table-hover#table
               thead 
-                tr 
+                tr  
                   th #
                   th Name 
                   th Email 
@@ -32,4 +45,4 @@ div.container style="margin-top:80px"
                       -if user.id == current_user.id
                         - if UsersLoyalty.new(current_user, user).update?
                           a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
-                        => link_to "Delete", "/users/#{ user.id }", method: :delete, class: "btn btn-sm btn-danger text-white"
+                        => link_to "Delete", "/users/#{ user.id }", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger text-white"

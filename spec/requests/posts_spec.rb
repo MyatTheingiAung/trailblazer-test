@@ -76,4 +76,11 @@ describe 'Posts', type: :request do
       expect(response).to redirect_to posts_path
     end
   end
+  describe 'POST /posts/import' do
+    it 'return status code 200' do
+      file = Rack::Test::UploadedFile.new('app/assets/posts.csv','text/csv')
+      post '/posts/import', :params => { file: file }
+      expect(response).to redirect_to posts_path
+    end
+  end
 end

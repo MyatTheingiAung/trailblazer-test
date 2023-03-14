@@ -47,3 +47,15 @@ Visit below url:
 http://127.0.0.1:3000/
 ```
 
+## Rspec 
+
+Run database seeder:
+```
+rails db:seed RAILS_ENV=test
+```
+
+Run rspec in console:
+```
+rspec
+```
+
