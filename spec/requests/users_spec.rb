@@ -98,7 +98,12 @@ describe 'Users', type: :request do
     end
     it 'return status code 422' do
       post '/users/import'
-      expect(response).to redirect_to users_path
+      expect(flash[:file]).to eq('File field is required')
+    end
+    it 'return file type error' do
+      file =  Rack::Test::UploadedFile.new('app/assets/images/cat.png','image/png')
+      post '/users/import', :params => { file: file }
+      expect(flash[:file]).to eq('File type must be: text/csv')
     end
   end
 end

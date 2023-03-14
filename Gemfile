@@ -63,16 +63,21 @@ gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'trailblazer', '>= 2.1.0'
 gem 'trailblazer-rails'
 
+# reform form
 gem 'dry-validation'
 gem 'reform'
 gem 'reform-rails'
 
+# authentication package
 gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
 
+# rspec testing
 gem 'rails-controller-testing'
 gem 'rspec-rails'
 
+# soft delete
 gem 'paranoia', '~> 2.2'
 
+# Authorization package
 gem 'banken'

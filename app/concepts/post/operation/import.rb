@@ -3,8 +3,8 @@ module Post::Operation
     step :import
 
     def import(options, params, **)
-      if options[:params][:nil_class]
-        input = options[:params][:nil_class][:file]
+      if options[:params][:file]
+        input = options[:params][:file]
         if input.content_type == 'text/csv'
           file = File.open(input)
           CSV.foreach(file.path, headers: true) do |row|
