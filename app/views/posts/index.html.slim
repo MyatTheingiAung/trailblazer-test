@@ -1,16 +1,17 @@
 = render 'share/nav'
 .container.col-12.col-md-7 style="margin-top:84px"
-  .d-flex.justify-content-between
-    a.btn.btn-color.text-white href="/posts/new" Add Post
-    .d-flex.align-items-center
-      = form_with url: "posts/import", method: :post do |f|
-        .form-group.me-2.d-inline-block 
-          = f.file_field :file, class: 'form-control'
-        button.btn.btn-primary.mb-1.border-0 Upload Post
-      => link_to "Download Post", posts_path(format: 'csv'), download: 'post' , class: "btn btn-danger text-white ms-4 border-0"
-  - if flash[:file]
-    .fs-6.fw-bold.text-danger style="margin-left:32%" = flash[:file]
-  .mb-4
+  - if user_signed_in?
+    .d-flex.justify-content-between
+      a.btn.btn-color.text-white href="/posts/new" Add Post
+      .d-flex.align-items-center
+        = form_with url: "posts/import", method: :post do |f|
+          .form-group.me-2.d-inline-block 
+            = f.file_field :file, class: 'form-control'
+          button.btn.btn-primary.mb-1.border-0 Upload Post
+        => link_to "Download Post", posts_path(format: 'csv'), download: 'post' , class: "btn btn-danger text-white ms-4 border-0"
+    - if flash[:file]
+      .fs-6.fw-bold.text-danger style="margin-left:32%" = flash[:file]
+    .mb-4
   - if @posts.empty?
     .card
       .card-body

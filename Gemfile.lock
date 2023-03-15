@@ -80,7 +80,6 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (4.1.0)
-    chunky_png (1.4.0)
     concurrent-ruby (1.2.0)
     crass (1.0.6)
     date (3.3.3)
@@ -134,6 +133,8 @@ GEM
       dry-initializer (~> 3.0)
       dry-schema (~> 1.8, >= 1.8.0)
     erubi (1.12.0)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5-x64-mingw32)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -245,10 +246,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rqrcode (2.1.2)
-      chunky_png (~> 1.0)
-      rqrcode_core (~> 1.0)
-    rqrcode_core (1.2.0)
     rspec-core (3.12.1)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.2)
@@ -377,6 +374,7 @@ DEPENDENCIES
   devise
   devise_invitable (~> 2.0.0)
   dry-validation
+  faker
   jbuilder (~> 2.7)
   letter_opener_web (~> 1.4)
   mysql2 (~> 0.5)
@@ -385,9 +383,9 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.2)
   rails-controller-testing
+  rake (~> 13.0, >= 13.0.6)
   reform
   reform-rails
-  rqrcode
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)

@@ -17,13 +17,33 @@ User.create!([{
                 birthday: '2023-2-27',
                 role: 'admin'
               }])
+User.create!([{
+                name: 'Ma Ma',
+                email: 'mama@gmail.com',
+                password: '123456',
+                password_confirmation: '123456',
+                phone: '09987654321',
+                address: 'Pyay',
+                birthday: '2023-2-27',
+                role: 'user'
+              }])
+User.create!([{
+                name: 'Ko Ko',
+                email: 'koko@gmail.com',
+                password: '123456',
+                password_confirmation: '123456',
+                phone: '09987654321',
+                address: 'Pyay',
+                birthday: '2023-2-27',
+                role: 'user'
+              }])
 p "Created #{User.count} users"
 
 Post.destroy_all
 Post.create!([{
-  title: 'Routing In Ruby On Rails',
-  description: 'The Router is responsible for matching the incoming HTTP request to the appropriate controller action to run, based on the HTTP verb and the URL being requested. It is a critical part of any Rails application as it determines what response the user will receive. When an HTTP request arrives, Rails also grabs all the parameters that came with it and makes them available in a special hash called params. This hash can be…',
-  privacy: 'public',
-  user_id: User.first.id
+  title: Faker::Lorem.words(number: rand(2..10)).join(' '),
+  description: Faker::Lorem.paragraphs.join(' '),
+  privacy: rand(0..1) == 1 ? 'private' : 'public',
+  user_id: rand(1..3)
 }])
 p "Created #{Post.count} posts"

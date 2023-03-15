@@ -54,7 +54,11 @@ describe 'Posts', type: :request do
   describe 'GET /posts/1/edit' do
     it 'return status code 200' do
       get edit_post_url(Post.first)
-      expect(response).to be_successful
+      if current_user.id == Post.first.user_id
+        expect(response).to be_successful
+      else
+        expect(response).to have_http_status(404)
+      end
     end
   end
   describe 'PATCH /posts/1' do

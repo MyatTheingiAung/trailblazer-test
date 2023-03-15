@@ -81,3 +81,6 @@ gem 'paranoia', '~> 2.2'
 
 # Authorization package
 gem 'banken'
+
+gem 'faker'
+gem 'rake', '~> 13.0', '>= 13.0.6'
