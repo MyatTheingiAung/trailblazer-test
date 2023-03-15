@@ -78,6 +78,14 @@ class UsersController < ApplicationController
   def profile
     run User::Operation::Show do |result|
       @user = result[:model]
+      @qr_code = RQRCode::QRCode.new(@user.name)
+      @svg = @qr_code.as_svg(
+        color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 8,
+        standalone: true,
+        use_path: true
+      )
     end
   end
 

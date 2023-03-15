@@ -35,5 +35,8 @@
               p Type
             .col-8
               p = @user.role
+          .row 
+            .col-12.user-svg
+              == @svg
           .d-flex.justify-content-end
             a.btn.btn-color.text-white href="/users/#{ @user.id }/edit" Edit
