@@ -46,3 +46,4 @@ div.container style="margin-top:90px"
                         - if UsersLoyalty.new(current_user, user).update?
                           a.btn.btn-sm.btn-info.me-2.text-white href="/users/#{ user.id }/edit" Edit
                         => link_to "Delete", "/users/#{ user.id }", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger text-white"
+          a.btn.text-white.mt-3.float-end href="/users/sign_up" style="background-color: #317a84" Create User

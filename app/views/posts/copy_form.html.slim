@@ -1,0 +1,32 @@
+= render 'share/nav'
+.container style="margin-top:80px"
+  .row 
+    .col-12.col-md-6.mx-auto
+      .card 
+        .card-body 
+          h5.txt-color Post Copy
+          = form_with model: @form, url: '/posts/copy', method: :post do |f|
+            = f.hidden_field :user_id, value: current_user.id
+            .form-group.mb-4 
+              = f.label :post_title, class: 'mb-2'
+              = f.text_field :title, class: 'form-control' 
+              - if @form.errors[:title].any?
+                .error-msg Title #{ @form.errors[:title][0] }
+            .form-group.mb-4
+              = f.label :description, class: 'mb-2'
+              = f.text_area :description, class: 'form-control', rows: '5'
+              - if @form.errors[:description].any?
+                .error-msg Description #{ @form.errors[:description][0] }
+            .form-group.mb-4 
+              = f.label :privacy_setting, class: 'mb-2'
+              .form-check.d-flex.p-0.mb-2
+                = f.radio_button :privacy, 'public'
+                = f.label :public
+              .form-check.p-0.d-flex
+                = f.radio_button :privacy, 'private'
+                = f.label :private
+              - if @form.errors[:privacy].any?
+                .error-msg Privacy #{ @form.errors[:privacy][0] }
+            .d-flex.justify-content-end.mb-2
+              a.btn.btn-secondary.text-white.me-2 href="/posts" Cancel
+              button.btn.btn-primary Save

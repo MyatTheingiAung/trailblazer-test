@@ -35,7 +35,7 @@
     - if @user
       = f.date_field :birthday,  class: 'form-control', value: @user.birthday 
     - else
-      = f.date_field :birthday,  class: 'form-control'
+      = f.date_field :birthday,  class: 'form-control', value: ''
     - if @form.errors[:birthday].any?
       .error-msg Birthday #{ @form.errors[:birthday][0] }
   .form-group.mb-4

@@ -5,7 +5,7 @@ module Post::Operation
     def get_post_list(options, **)
       current_user = options['current_user']
       if current_user
-        options['posts'] = current_user.role == 'admin' ? Post.order('id DESC').all : Post.where(user_id: current_user.id).order('id DESC').all
+        options['posts'] = current_user.role == 'admin' ? Post.order('id DESC').all : Post.where(user_id: current_user.id).or(Post.where(privacy: 'public')).order('id DESC').all
       else
         options['posts'] = Post.where(privacy: 'public').order('id DESC').all
       end

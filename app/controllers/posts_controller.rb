@@ -81,6 +81,19 @@ class PostsController < ApplicationController
     end
   end
 
+  # function: import
+  # posts copy form
+  def copy_form
+    run Post::Operation::Update::Present
+  end
+
+  def copy
+    run Post::Operation::Copy do |_result|
+      return redirect_to posts_path, notice: 'Post Copy Successfully!'
+    end
+    render :copy_form
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

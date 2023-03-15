@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile'
   post '/posts/import', to: 'posts#import'
   post '/users/import', to: 'users#import'
+  get '/posts/copy/:id', to: 'posts#copy_form'
+  post '/posts/copy', to: 'posts#copy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
