@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :posts
   root to: 'posts#index'
   resources :users
+  get '/register', to: 'users#new'
+  post '/register', to: 'users#create'
   get '/login', to: 'login#login'
   post '/login', to: 'login#actual_login'
   get '/logout', to: 'login#destroy'
