@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # rspec mail
+  # rspec reset_password_instructions
   default_url_options host: 'scm.myattheingiaung@gmail.com'
 
   # letter opener web

@@ -92,4 +92,25 @@ describe 'Posts', type: :request do
       expect(flash[:file]).to eq('File type must be: text/csv')
     end
   end
+  describe 'GET /posts/copy/1' do
+    it 'return status code 200' do
+      get "/posts/copy/#{Post.first.id}"
+      expect(response).to be_successful
+    end
+  end
+  describe 'POST /posts/copy' do
+    it 'return status code 200' do
+      post posts_copy_url(Post.first), params: valid_params
+      expect(response).to redirect_to posts_path
+      post = Post.last
+      expect(post.title).to eq 'post title'
+      expect(post.description).to eq 'post description'
+      expect(post.privacy).to eq 'private'
+    end
+    it 'return status code 422' do
+      post posts_copy_url(Post.first), params: invalid_params
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:copy_form)
+    end
+  end
 end
